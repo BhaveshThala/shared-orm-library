@@ -1,0 +1,25 @@
+const Sequelize = require('sequelize')
+
+var dbProperties
+
+function createDbConnection(dbConfig)
+{
+    try {
+        const database = new Sequelize(dbConfig.databasename, dbConfig.username, dbConfig.password, {
+            host: dbConfig.host,
+            dialect: dbConfig.dbtype
+        });
+        dbProperties = dbConfig
+        return database
+        
+    } catch (error) {
+        console.log("Db Connection Error : ", error)
+    }
+}
+
+function closeConnection(database){
+    database.close()
+}
+
+const getDbConfig = () => {return dbProperties}
+module.exports = {createDbConnection , closeConnection , getDbConfig}
