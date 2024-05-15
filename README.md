@@ -6,13 +6,13 @@ It provides a generic implementation of the Sequelize ORM for relational databas
 Installation Steps
 
 Clone this repository to your local machine:
-Step 1) git clone <https://github.com/BhaveshThala/shared-orm-library.git>
+1) git clone <https://github.com/BhaveshThala/shared-orm-library.git>
 
 Navigate into the cloned directory:
-Step 2) cd <shared-orm-library>
+2) cd <shared-orm-library>
 
 Install the required packages using npm:
-Step 3) npm install
+3) npm install
 
 Usage
 There are two ways to use this repository:
