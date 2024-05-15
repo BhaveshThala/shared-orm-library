@@ -39,4 +39,4 @@ async function runMigrations(dbConnection) {
 }
 
 initializeDb();
-module.exports = closeConnection
+module.exports = {closeConnection , initializeDb}
