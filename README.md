@@ -7,7 +7,7 @@ Installation Steps
 
 Clone this repository to your local machine:
 1) git clone <https://github.com/BhaveshThala/shared-orm-library.git>
-2) cd <shared-orm-library>
+2) cd to clone folder shared-orm-library
 3) npm install
    
 Usage
