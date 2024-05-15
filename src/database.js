@@ -21,5 +21,7 @@ function closeConnection(database){
     database.close()
 }
 
-const getDbConfig = () => {return dbProperties}
+function getDbConfig() {
+    return dbProperties
+}
 module.exports = {createDbConnection , closeConnection , getDbConfig}
