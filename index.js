@@ -37,6 +37,4 @@ async function runMigrations(dbConnection) {
         console.error('Error executing migrations:', error);
     }
 }
-
-initializeDb();
 module.exports = {closeConnection , initializeDb}
