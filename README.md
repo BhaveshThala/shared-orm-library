@@ -1,7 +1,8 @@
 # shared-orm-library
 ## This repository is created using Node.js with version 20.13.1.
 
-It provides a generic implementation of the Sequelize ORM for relational databases such as MySQL, PostgreSQL, MariaDB, etc.
+It provides a generic implementation of the Sequelize ORM for relational databases such as MySQL, PostgreSQL, MariaDB, etc
+default is postgres.
 
 ## Prerequisites
 

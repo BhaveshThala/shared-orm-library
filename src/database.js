@@ -6,7 +6,7 @@ function createDbConnection(dbConfig) {
     try {
         const database = new Sequelize(dbConfig.databasename, dbConfig.username, dbConfig.password, {
             host: dbConfig.host,
-            dialect: dbConfig.dbtype,
+            dialect: dbConfig.dbtype || 'postgres',
             define: {
                 timestamps: false,
             },
