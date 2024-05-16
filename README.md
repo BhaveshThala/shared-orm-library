@@ -8,7 +8,7 @@
 ### Install Node JS
 Refer to https://nodejs.org/en/ to install nodejs
 
-Installation Steps
+## Installation Steps
 
 Clone this repository to your local machine:
 ```bash
