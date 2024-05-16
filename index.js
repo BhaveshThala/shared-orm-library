@@ -1,12 +1,18 @@
 const { createDbConnection , closeConnection} = require('./src/database.js')
 const { Umzug , SequelizeStorage} = require('umzug')
 const Sequelize  = require('sequelize')
+const pathLib = require('path')
 
 async function initializeDb(dbConfig){
     var dbConnection = createDbConnection(dbConfig)
     await runMigrations(dbConnection)
-    return dbConnection
 }
+
+async function getDbConnection(dbConfig)
+{
+    return createDbConnection(dbConfig)
+}
+
 function closeDbConnection(databaseConnection){
     return closeConnection(databaseConnection)
 }
@@ -14,11 +20,10 @@ function closeDbConnection(databaseConnection){
 async function runMigrations(dbConnection) {
     const umzug = new Umzug({
         storage:  new SequelizeStorage({ sequelize : dbConnection , modelName : 'SequelizeMeta' }),
-        context: dbConnection.getQueryInterface(),
         migrations: {
-            glob: './src/migrations/*.js',
+            glob: ['\*.js',{cwd : pathLib.resolve(__dirname,'migrations')}],
             resolve: ({ name, path, context }) => {
-                const migration = require(path || '')
+                const migration = require(path)
                 return {
                     name,
                     up: async () => migration.up(context, Sequelize),
@@ -26,6 +31,7 @@ async function runMigrations(dbConnection) {
                 }
             },
         },
+        context: dbConnection.getQueryInterface(),
         logger: console
     });
 
@@ -37,4 +43,4 @@ async function runMigrations(dbConnection) {
         console.error('Error executing migrations:', error);
     }
 }
-module.exports = {closeConnection , initializeDb}
+module.exports = { closeConnection: closeConnection , initializeDb : initializeDb , getDbConnection : getDbConnection}
